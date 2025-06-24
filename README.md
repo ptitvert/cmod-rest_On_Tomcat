@@ -16,14 +16,15 @@ This project takes an existing WAR file and repackages it with minimal overrides
 
 ## 🗂️ Project Structure
 
+```
 src/
 ├── main/
-│ ├── original/ # Place the original .war file here
-│ │ └── monapp.war
-│ └── webapp/
-│ └── WEB-INF/
-│ └── web.xml # Your override file
-
+│   ├── original/ # Place the original .war file here
+│   │   └── cmod-rest.war
+│   └── webapp/
+│       └── WEB-INF/
+│           └── web.xml # Your override file
+```
 
 ---
 
