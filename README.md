@@ -48,7 +48,7 @@ You can rename it via the <finalName> setting in pom.xml if needed.
 → Add them to src/main/webapp/ in the correct subfolders.
 
 * Want to switch WAR source?
-→ Replace monapp.war in src/main/original/.
+→ Replace cmod-rest.war in src/main/original/.
 
 ## 🧠 Why this setup?
 
@@ -62,6 +62,23 @@ You can rename it via the <finalName> setting in pom.xml if needed.
 * Maven 3.6+
 * JDK 8+ (only for build, not needed if you don’t compile any Java class)
 
+## Tomcat integration
+
+Does work only with Tomcat 9.X, not with 10.x or 11.x. Why? Because of WebSphere, and how the cmod-rest.api was built, it doesn't support the new JEE, which requires to rename a lot of packages from javax to jakarta.
+Until IBM does the correction, or the upgrade... we will need to stay on Tomcat 9.x. Of course, one way would be to decompile, correct and recompile :-) but this is not allowed :-D
+
+### setenv.sh
+
+Here is a sample of my setenv.sh that works and needs to be installed in the <tomcat_install_dir>/bin/setenv.sh (in linux, please adapt to your own plateform)
+
+```bash
+export CMOD_HOME=/opt/ibm/ondemand/V10.5
+export JAVA_HOME=${CMOD_HOME}/jre
+export JRE_HOME=${JAVA_HOME}
+export restcfgdir="/home/user/CMOD_REST/rest_cfg_dir"
+export CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=${CMOD_HOME}/www:${CMOD_HOME}/lib64"
+export CLASSPATH="${CMOD_HOME}/jars/log4j-core-2.23.1.jar:${CMOD_HOME}/jars/log4j-api-2.23.1.jar:${CMOD_HOME}/jars/gson-2.10.1.jar:${CMOD_HOME}/jars/commons-pool2-2.12.0.jar:${CMOD_HOME}/www/api/ODApi.jar"
+```
 
 ## 📬 Questions?
 Feel free to reach out or fork the project.
