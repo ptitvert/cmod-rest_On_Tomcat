@@ -80,6 +80,10 @@ export CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=${CMOD_HOME}/www:${CMOD
 export CLASSPATH="${CMOD_HOME}/jars/log4j-core-2.23.1.jar:${CMOD_HOME}/jars/log4j-api-2.23.1.jar:${CMOD_HOME}/jars/gson-2.10.1.jar:${CMOD_HOME}/jars/commons-pool2-2.12.0.jar:${CMOD_HOME}/www/api/ODApi.jar"
 ```
 
+### Deployment
+
+Simply copy the cmod-rest-v2.1.0.0.war with a new name in the webapp directory of tomcat, and it should be automatically deployed and working.
+
 ## 📬 Questions?
 Feel free to reach out or fork the project.
 This setup is ideal for patching black-box WAR files without rewriting or reverse-engineering them.
